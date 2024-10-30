@@ -1,4 +1,4 @@
-# first-project
+# To Do List Vue.js
 
 ## Project setup
 ```
