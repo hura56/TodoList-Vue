@@ -1,5 +1,13 @@
 <template>
 <div :class="{ 'dark-mode': isDarkMode }">
+  <div class="toggle-container">
+      <span>🌞</span>
+      <label class="switch">
+        <input type="checkbox" v-model="isDarkMode" />
+        <span class="slider"></span>
+      </label>
+      <span>🌜</span>
+    </div>
   <div class="todo-container">
     <h1>To-Do List</h1>
     <div class="hello">
@@ -24,14 +32,12 @@
       </li>
     </ul>
   </div>
-  <button @click="toggleDarkMode">
-    Toggle to {{ isDarkMode ? 'light' : 'dark' }} mode
-  </button>
 </div>
 </template>
 
 <script>
 import '../assets/styles/TodoList.css';
+import '../assets/styles/darkMode.css';
 export default {
   data() {
     return {
