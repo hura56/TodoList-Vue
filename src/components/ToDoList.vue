@@ -3,16 +3,18 @@
   <div class="toggle-container">
       <span>🌞</span>
       <label class="switch">
-        <input type="checkbox" v-model="isDarkMode" />
+        <input type="checkbox" v-model="isDarkMode"/>
         <span class="slider"></span>
       </label>
       <span>🌜</span>
     </div>
+
   <div class="todo-container">
     <h1>To-Do List</h1>
     <div class="hello">
         Hello, <input v-model="userName" placeholder="Enter your name" class="name-input"/>
     </div>
+
     <div class="input-container">
     <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add task"/>
     <select v-model="newPriority">
@@ -22,26 +24,35 @@
     </select>
     <button @click="addTodo">Add</button>
     </div>
-    <ul class="todo-list">
-      <li v-for="(todo, index) in todos" :key="index" :class="{ done: todo.completed, [todo.priority]: true }">
-        <div class="todo-item">
-            <input type="checkbox" v-model="todo.completed" />
-            <span :class="{ done: todo.completed }">{{ todo.text }}</span>
-        </div>
-        <button @click="deleteTodo(index)">Delete</button>
-      </li>
-    </ul>
+
+    <draggable v-model="todos" @end="saveTodos" class="todo-list">
+        <template v-slot:item="{ element, index }">
+          <li :key="index" :class="{ done: element.completed, [element.priority]: true }">
+            <div class="todo-item">
+              <input type="checkbox" v-model="element.completed" />
+              <span :class="{ done: element.completed }">{{ element.text }}</span>
+            </div>
+            <button @click="deleteTodo(index)">Delete</button>
+          </li>
+        </template>
+      </draggable>
+
   </div>
 </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable';
 import '../assets/styles/TodoList.css';
 import '../assets/styles/darkMode.css';
+
 export default {
+  components: {
+    draggable
+  },
   data() {
     return {
-      isDarkMode: false,
+      isDarkMode: this.loadDarkMode(),
       userName: this.loadUserName(),
       newTodo: '',
       newPriority: 'low',
@@ -74,11 +85,18 @@ export default {
     },
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
+    },
+    loadDarkMode() {
+      const savedDarkMode = localStorage.getItem('darkMode');
+      return savedDarkMode ? JSON.parse(savedDarkMode) : false;
     }
   },
   watch: {
     userName(newName) {
         localStorage.setItem('userName', newName);
+    },
+    isDarkMode(newVal) {
+      localStorage.setItem('darkMode', JSON.stringify(newVal));
     },
     todos: {
         handler() {
