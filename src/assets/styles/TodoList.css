@@ -1,0 +1,85 @@
+.todo-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 12px;
+    background-color: rgb(252, 225, 167);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.493);
+}
+h1 {
+    font-size: 28px;
+    color: #494949;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.input-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+button {
+    padding: 8px 12px;
+    background-color: #1cb422;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0a740e;
+}
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #5f5f5f;
+}
+li.done span {
+    text-decoration: line-through;
+    color: rgb(76, 155, 76);
+}
+li button {
+    background-color: #e74c3c;
+}
+li button:hover {
+    background-color: #e20707;
+}
+.hello {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.name-input {
+    padding: 4px;
+    max-width: 100px;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+}
+.low {
+    background-color: lightblue;
+}
+.medium {
+    background-color: orange;
+}
+.high {
+    background-color: rgb(180, 36, 36);
+}
