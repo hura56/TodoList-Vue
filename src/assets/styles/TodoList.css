@@ -71,15 +71,44 @@ li button:hover {
     padding: 4px;
     max-width: 100px;
     font-size: 16px;
+    margin-bottom: 4px;
     border: none;
     background-color: transparent;
 }
 .low {
-    background-color: lightblue;
+    background-color: rgb(135, 205, 228);
 }
 .medium {
     background-color: orange;
 }
 .high {
     background-color: rgb(180, 36, 36);
+}
+/*Styles for dark mode*/
+.dark-mode {
+    color: #e7e7e7
+}
+.dark-mode h1 {
+    color: #e7e7e7;
+}
+.dark-mode .todo-container {
+    background-color: #444;
+}
+.dark-mode .name-input {
+    background-color: transparent;
+}
+.dark-mode input,
+.dark-mode select,
+.dark-mode button {
+    background-color: #555555;
+    color: #c4c2c2;
+}
+.dark-mode .low {
+    background-color: rgb(31, 98, 121);
+}
+.dark-mode .medium {
+    background-color: rgb(170, 111, 1);
+}
+.dark-mode .high {
+    background-color: rgb(133, 14, 14);
 }

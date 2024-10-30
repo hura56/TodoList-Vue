@@ -1,4 +1,5 @@
 <template>
+<div :class="{ 'dark-mode': isDarkMode }">
   <div class="todo-container">
     <h1>To-Do List</h1>
     <div class="hello">
@@ -23,6 +24,10 @@
       </li>
     </ul>
   </div>
+  <button @click="toggleDarkMode">
+    Toggle to {{ isDarkMode ? 'light' : 'dark' }} mode
+  </button>
+</div>
 </template>
 
 <script>
@@ -30,6 +35,7 @@ import '../assets/styles/TodoList.css';
 export default {
   data() {
     return {
+      isDarkMode: false,
       userName: this.loadUserName(),
       newTodo: '',
       newPriority: 'low',
@@ -59,6 +65,9 @@ export default {
     loadUserName() {
         const savedName = localStorage.getItem('userName');
         return savedName ? savedName : '';
+    },
+    toggleDarkMode() {
+      this.isDarkMode = !this.isDarkMode;
     }
   },
   watch: {
